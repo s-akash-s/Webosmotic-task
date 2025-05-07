@@ -36,7 +36,6 @@ class ConversationManager:
         """
         conversation_id = str(uuid.uuid4())
         
-        # Create conversation object
         conversation = {
             "id": conversation_id,
             "document_id": document_id,
@@ -45,7 +44,6 @@ class ConversationManager:
             "messages": []
         }
         
-        # Store in memory and on disk
         self.conversations[conversation_id] = conversation
         self._save_conversation(conversation)
         
@@ -67,28 +65,23 @@ class ConversationManager:
             None
         """
         try:
-            # Get or load the conversation
             conversation = self._get_conversation(conversation_id)
             
             if not conversation:
                 raise ValueError(f"Conversation not found: {conversation_id}")
             
-            # Create message object
             message = {
                 "role": role,
                 "content": content,
                 "timestamp": time.time()
             }
             
-            # Add response data if provided
             if response and role == "assistant":
                 message["response_data"] = response
             
-            # Add to conversation
             conversation["messages"].append(message)
             conversation["updated_at"] = time.time()
             
-            # Save updated conversation
             self._save_conversation(conversation)
             
             logger.info(f"Added {role} message to conversation: {conversation_id}")
@@ -109,13 +102,11 @@ class ConversationManager:
             List[Dict[str, Any]]: List of messages
         """
         try:
-            # Get or load the conversation
             conversation = self._get_conversation(conversation_id)
             
             if not conversation:
                 return []
             
-            # Return messages (limited)
             messages = conversation.get("messages", [])
             return messages[-limit:] if limit > 0 else messages
             
@@ -133,11 +124,9 @@ class ConversationManager:
         Returns:
             Optional[Dict[str, Any]]: Conversation data or None
         """
-        # Check in-memory cache first
         if conversation_id in self.conversations:
             return self.conversations[conversation_id]
         
-        # Try to load from disk
         conversation_path = os.path.join(self.storage_dir, f"{conversation_id}.json")
         
         if os.path.exists(conversation_path):
@@ -145,7 +134,6 @@ class ConversationManager:
                 with open(conversation_path, 'r') as f:
                     conversation = json.load(f)
                     
-                # Cache in memory
                 self.conversations[conversation_id] = conversation
                 return conversation
                 

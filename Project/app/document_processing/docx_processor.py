@@ -35,10 +35,8 @@ class DocxProcessor(BaseDocumentProcessor):
         logger.info(f"Processing DOCX file: {file_path}")
         
         try:
-            # Load the document
             doc = docx.Document(file_path)
             
-            # Extract metadata
             doc_metadata = {
                 "source": os.path.basename(file_path),
                 "file_path": file_path,
@@ -49,18 +47,14 @@ class DocxProcessor(BaseDocumentProcessor):
                 "creation_date": str(doc.core_properties.created) if doc.core_properties.created else "",
             }
             
-            # Extract text from paragraphs
             text_content = []
             
-            # Estimate page breaks and add page markers
             pages = self._estimate_pages(doc)
             
-            # Process document content with page markers
             full_text = ""
             for i, (page_num, page_content) in enumerate(pages.items(), 1):
                 full_text += f"--- Page {page_num} ---\n{page_content}\n\n"
             
-            # Process images in the document for OCR
             image_text = self._process_images(doc)
             if image_text:
                 full_text += f"\n--- Images OCR Text ---\n{image_text}"
@@ -73,7 +67,6 @@ class DocxProcessor(BaseDocumentProcessor):
     
     def _estimate_page_count(self, doc: docx.Document) -> int:
         """Estimate the number of pages in a DOCX document."""
-        # A very rough estimation: assume 500 words per page
         words_per_page = 500
         total_words = sum(len(paragraph.text.split()) for paragraph in doc.paragraphs)
         return max(1, round(total_words / words_per_page))
@@ -83,7 +76,6 @@ class DocxProcessor(BaseDocumentProcessor):
         Estimate page breaks in the document and return text by page.
         This is an approximation since docx doesn't have direct page information.
         """
-        # Approximate characters per page (based on A4 page with normal margins and font)
         chars_per_page = 3000
         pages = {}
         current_page = 1
@@ -92,17 +84,14 @@ class DocxProcessor(BaseDocumentProcessor):
         for paragraph in doc.paragraphs:
             current_page_text += paragraph.text + "\n"
             
-            # Check if we've exceeded the estimated page length
             if len(current_page_text) > chars_per_page:
                 pages[current_page] = current_page_text
                 current_page += 1
                 current_page_text = ""
         
-        # Add the last page if there's content
         if current_page_text:
             pages[current_page] = current_page_text
         
-        # If no pages were created, add at least one
         if not pages:
             pages[1] = ""
             
@@ -112,7 +101,6 @@ class DocxProcessor(BaseDocumentProcessor):
         """Extract text from images in the document using OCR."""
         image_texts = []
         
-        # Try to extract images - this is simplified and might not work for all DOCXs
         try:
             for rel in doc.part.rels.values():
                 if "image" in rel.target_ref:
@@ -142,21 +130,16 @@ class DocxProcessor(BaseDocumentProcessor):
         logger.info(f"Chunking document: {document.metadata.get('source', 'unknown')}")
         
         try:
-            # Split the document text into chunks
             chunks = self.text_splitter.split_text(document.text)
             
-            # Create DocumentChunk objects with metadata
             doc_chunks = []
             for i, chunk_text in enumerate(chunks):
-                # Extract page numbers from chunk text
                 page_numbers = []
                 page_pattern = re.compile(r"--- Page (\d+) ---")
                 for match in page_pattern.finditer(chunk_text):
                     page_numbers.append(int(match.group(1)))
                 
-                # If no page markers found, make an estimate
                 if not page_numbers:
-                    # Simplified estimation
                     total_length = len(document.text)
                     chunk_start = document.text.find(chunk_text)
                     relative_position = chunk_start / total_length if total_length > 0 else 0
@@ -166,12 +149,11 @@ class DocxProcessor(BaseDocumentProcessor):
                     ))
                     page_numbers = [estimated_page]
                 
-                # Create chunk metadata
                 chunk_metadata = document.metadata.copy()
                 chunk_metadata.update({
                     "chunk_id": i,
                     "pages": page_numbers,
-                    "page": page_numbers[0] if page_numbers else 1,  # For compatibility with the API
+                    "page": page_numbers[0] if page_numbers else 1, 
                 })
                 
                 doc_chunks.append(DocumentChunk(chunk_text, chunk_metadata))

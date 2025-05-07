@@ -40,20 +40,18 @@ class Reranker:
             if not results:
                 return []
             
-            # Prepare input pairs for the re-ranker
+       
             input_pairs = [(query, result["text"]) for result in results]
             
-            # Get scores from the re-ranker
+        
             scores = self.model.predict(input_pairs)
-            
-            # Add scores to results
+
             for i, result in enumerate(results):
                 result["rerank_score"] = float(scores[i])
             
-            # Sort results by re-ranking score (descending)
+ 
             reranked_results = sorted(results, key=lambda x: x["rerank_score"], reverse=True)
-            
-            # Return top-k results
+           
             return reranked_results[:top_k]
             
         except Exception as e:

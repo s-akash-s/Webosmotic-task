@@ -56,10 +56,9 @@ class LocalEmbeddingProvider(BaseEmbeddingProvider):
             List[List[float]]: List of embedding vectors
         """
         try:
-            # Generate embeddings
+           
             embeddings = self.model.encode(texts, normalize_embeddings=True)
-            
-            # Convert to list format (from numpy array)
+
             return embeddings.tolist()
             
         except Exception as e:
@@ -90,16 +89,15 @@ class EmbeddingService:
             Dict containing document ID, embeddings, and metadata
         """
         try:
-            # Extract texts from chunks
+        
             texts = [chunk.text for chunk in chunks]
             
-            # Generate embeddings
+    
             embeddings = self.provider.get_embeddings(texts)
-            
-            # Prepare document data
+      
             document_id = str(uuid.uuid4())
             
-            # Prepare chunk data with embeddings
+          
             chunk_data = []
             for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
                 chunk_data.append({

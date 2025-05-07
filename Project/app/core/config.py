@@ -45,7 +45,6 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Create necessary directories
 os.makedirs(settings.DOCUMENT_UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(settings.DOCUMENT_PROCESSED_FOLDER, exist_ok=True)
 os.makedirs(settings.VECTOR_DB_PATH, exist_ok=True)

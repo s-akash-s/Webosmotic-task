@@ -31,7 +31,7 @@ class OllamaProvider(BaseLLMProvider):
     """LLM provider using Ollama models."""
     
     def __init__(self, model_name: str = settings.LLM_MODEL, 
-                 base_url: str = "http://13.234.177.214:11434"):  # Update to your Ollama server URL
+                 base_url: str = "http://13.234.177.214:11434"):  
         """
         Initialize the Ollama provider.
         
@@ -41,7 +41,7 @@ class OllamaProvider(BaseLLMProvider):
         """
         self.model_name = model_name
         self.base_url = base_url
-        self.api_endpoint = f"{base_url}/api/generate"  # Changed from /api/chat to /api/generate
+        self.api_endpoint = f"{base_url}/api/generate" 
         
         logger.info(f"Initialized Ollama provider with model: {model_name}")
     
@@ -61,11 +61,11 @@ class OllamaProvider(BaseLLMProvider):
             Dict[str, Any]: Response with answer and citations
         """
         try:
-            # Prepare context information
+   
             context_text = "\n\n".join([f"Document: {ctx['metadata']['source']}, Page: {ctx['metadata']['page']}\n{ctx['text']}" 
                                       for ctx in context])
             
-            # Prepare system prompt with instructions
+      
             system_prompt = f"""You are a helpful AI assistant that provides accurate information based on the provided context. 
 When answering questions, ALWAYS use ONLY the information from the provided context. 
 If the context doesn't contain the answer, say "I don't have enough information to answer this question."
@@ -75,18 +75,17 @@ For example: [Sample Document, p.5]
 Here is the context information:
 {context_text}"""
             
-            # Add conversation history if available
+
             conversation_text = ""
             if conversation_history:
                 for message in conversation_history:
                     role = message["role"]
                     content = message["content"]
                     conversation_text += f"\n{role.upper()}: {content}"
-                
-            # Prepare the full prompt
+       
             full_prompt = f"{system_prompt}\n\n{conversation_text}\n\nUSER: {query}\n\nASSISTANT:"
             
-            # Prepare the request payload for the generate endpoint
+            
             payload = {
                 "model": self.model_name,
                 "prompt": full_prompt,
@@ -95,21 +94,19 @@ Here is the context information:
                     "temperature": settings.LLM_TEMPERATURE
                 }
             }
-            
-            # Make the API request
+       
             response = requests.post(self.api_endpoint, json=payload)
             response.raise_for_status()
-            
-            # Parse the response - different format for generate endpoint
+       
             result = response.json()
             
-            # Extract the answer from the generate endpoint
+      
             answer_text = result.get("response", "")
             
-            # Extract citations from the answer
+   
             citations = self._extract_citations(answer_text, context) if require_citations else []
             
-            # Create the response object
+  
             response_object = {
                 "answer": answer_text,
                 "citations": citations
@@ -133,13 +130,12 @@ Here is the context information:
         Returns:
             List[Dict[str, Any]]: List of citation objects
         """
-        # Initialize empty citations list
+
         citations = []
         
-        # Add citations for all used context items
-        # In a more sophisticated implementation, we'd parse the answer to find specific citations
+
         for ctx in context:
-            # Check if any part of this context is used in the answer
+          
             if len(ctx["text"]) > 30 and any(
                 segment in answer 
                 for segment in [ctx["text"][:30], ctx["text"][30:60], ctx["text"][-30:]]
@@ -148,8 +144,7 @@ Here is the context information:
                     "page": ctx["metadata"].get("page", 1),
                     "document_name": ctx["metadata"].get("source", "unknown")
                 })
-        
-        # Remove duplicates based on page and document_name
+   
         unique_citations = []
         seen = set()
         

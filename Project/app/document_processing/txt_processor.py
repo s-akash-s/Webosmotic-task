@@ -1,4 +1,3 @@
-# app/document_processing/txt_processor.py
 import os
 import logging
 from typing import Dict, List, Any, Optional
@@ -32,20 +31,19 @@ class TxtProcessor(BaseDocumentProcessor):
         logger.info(f"Processing TXT file: {file_path}")
         
         try:
-            # Detect file encoding
+       
             with open(file_path, 'rb') as file:
                 raw_data = file.read()
                 encoding_result = chardet.detect(raw_data)
                 encoding = encoding_result['encoding']
             
-            # Read the file with the detected encoding
+            
             with open(file_path, 'r', encoding=encoding) as file:
                 text_content = file.read()
-            
-            # Get file stats
+        
             file_stats = os.stat(file_path)
             
-            # Extract metadata
+   
             doc_metadata = {
                 "source": os.path.basename(file_path),
                 "file_path": file_path,
@@ -54,13 +52,12 @@ class TxtProcessor(BaseDocumentProcessor):
                 "creation_date": str(file_stats.st_ctime),
                 "modification_date": str(file_stats.st_mtime),
             }
-            
-            # Estimate the number of pages (rough approximation)
+
             chars_per_page = 3000
             page_count = max(1, len(text_content) // chars_per_page)
             doc_metadata["page_count"] = page_count
             
-            # Add page markers to the text
+         
             processed_text = ""
             for i in range(page_count):
                 start_idx = i * chars_per_page
@@ -87,21 +84,21 @@ class TxtProcessor(BaseDocumentProcessor):
         logger.info(f"Chunking document: {document.metadata.get('source', 'unknown')}")
         
         try:
-            # Split the document text into chunks
+
             chunks = self.text_splitter.split_text(document.text)
             
-            # Create DocumentChunk objects with metadata
+      
             doc_chunks = []
             for i, chunk_text in enumerate(chunks):
-                # Extract page numbers from chunk text
+         
                 page_numbers = []
                 page_pattern = re.compile(r"--- Page (\d+) ---")
                 for match in page_pattern.finditer(chunk_text):
                     page_numbers.append(int(match.group(1)))
                 
-                # If no page markers found, make an estimate
+          
                 if not page_numbers:
-                    # Simplified estimation
+            
                     total_length = len(document.text)
                     chunk_start = document.text.find(chunk_text)
                     relative_position = chunk_start / total_length if total_length > 0 else 0
@@ -111,12 +108,12 @@ class TxtProcessor(BaseDocumentProcessor):
                     ))
                     page_numbers = [estimated_page]
                 
-                # Create chunk metadata
+             
                 chunk_metadata = document.metadata.copy()
                 chunk_metadata.update({
                     "chunk_id": i,
                     "pages": page_numbers,
-                    "page": page_numbers[0] if page_numbers else 1,  # For compatibility with the API
+                    "page": page_numbers[0] if page_numbers else 1,  
                 })
                 
                 doc_chunks.append(DocumentChunk(chunk_text, chunk_metadata))

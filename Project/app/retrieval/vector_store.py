@@ -1,4 +1,3 @@
-# app/retrieval/vector_store.py
 from typing import List, Dict, Any, Optional, Union
 import logging
 import os
@@ -23,10 +22,10 @@ class VectorStore:
             collection_name: Name of the collection to use
         """
         try:
-            # Initialize ChromaDB client
+ 
             self.client = chromadb.PersistentClient(path=settings.VECTOR_DB_PATH)
             
-            # Get or create collection
+        
             self.collection = self.client.get_or_create_collection(
                 name=collection_name,
                 metadata={"hnsw:space": "cosine"}
@@ -52,7 +51,7 @@ class VectorStore:
             document_id = document_data["document_id"]
             chunks = document_data["chunks"]
             
-            # Prepare data for batch addition
+  
             ids = []
             embeddings = []
             metadatas = []
@@ -62,24 +61,24 @@ class VectorStore:
                 ids.append(chunk["id"])
                 embeddings.append(chunk["embedding"])
                 
-                # Prepare metadata (ensure it's JSON serializable)
+          
                 metadata = chunk["metadata"].copy()
                 
-                # Ensure document_id is added to metadata for filtering
+           
                 metadata["document_id"] = document_id
                 
                 for key, value in metadata.items():
-                    # Convert lists to strings
+              
                     if isinstance(value, list):
                         metadata[key] = str(value)
-                    # Convert other non-primitive types to strings
+      
                     elif not isinstance(value, (str, int, float, bool, type(None))):
                         metadata[key] = str(value)
                 
                 metadatas.append(metadata)
                 documents.append(chunk["text"])
             
-            # Add to collection
+       
             self.collection.add(
                 ids=ids,
                 embeddings=embeddings,
@@ -110,35 +109,33 @@ class VectorStore:
             List[Dict[str, Any]]: List of query results
         """
         try:
-            # Set up filter if document_id is provided
+           
             filter_condition = None
             if document_id:
-                # Use explicit metadata filtering with ChromaDB
+             
                 filter_condition = {"document_id": document_id}
                 
-            # Query the collection with explicit filter
+         
             results = self.collection.query(
                 query_embeddings=[embedding],
                 n_results=n_results,
-                where=filter_condition  # Use ChromaDB's native filtering
+                where=filter_condition  
             )
-            
-            # Process and return results
+   
             processed_results = []
             
             if not results or not results['ids'] or not results['ids'][0]:
-                # Log more details about the empty results
+       
                 logger.warning(f"Empty results from ChromaDB. Document ID: {document_id}, Query: {query_text[:50]}...")
                 return []
             
             for i in range(len(results['ids'][0])):
-                # Extract result data
+
                 result_id = results['ids'][0][i]
                 result_text = results['documents'][0][i]
                 result_metadata = results['metadatas'][0][i]
                 result_distance = results['distances'][0][i] if 'distances' in results else None
-                
-                # Process metadata - convert string representations back to lists
+     
                 for key, value in result_metadata.items():
                     if isinstance(value, str) and value.startswith('[') and value.endswith(']'):
                         try:

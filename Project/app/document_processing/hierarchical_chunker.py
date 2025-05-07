@@ -56,20 +56,19 @@ class HierarchicalChunker:
         if metadata is None:
             metadata = {}
             
-        # Create parent chunks
+      
         parent_chunks = self.parent_chunker.create_chunks(text, metadata)
-        
-        # Create child chunks for each parent
+     
         all_child_chunks = []
         
         for i, parent in enumerate(parent_chunks):
             parent_text = parent["text"]
             parent_metadata = parent["metadata"].copy()
             
-            # Add parent index to metadata
+
             parent_metadata["parent_index"] = i
             
-            # Create child chunks from parent text
+       
             child_chunks = self.child_chunker.create_chunks(parent_text, parent_metadata)
             
             all_child_chunks.extend(child_chunks)
@@ -98,14 +97,13 @@ class HierarchicalChunker:
         """
         if metadata is None:
             metadata = {}
-            
-        # Create hierarchical chunks
+   
         chunks = self.create_hierarchical_chunks(text, metadata)
         
-        # Convert to DocumentChunk objects
+
         doc_chunks = []
         
-        # Add parent chunks
+   
         for i, parent in enumerate(chunks["parents"]):
             parent_metadata = parent["metadata"].copy()
             parent_metadata["chunk_type"] = "parent"
@@ -113,7 +111,7 @@ class HierarchicalChunker:
             
             doc_chunks.append(DocumentChunk(parent["text"], parent_metadata))
         
-        # Add child chunks
+
         for i, child in enumerate(chunks["children"]):
             child_metadata = child["metadata"].copy()
             child_metadata["chunk_type"] = "child"
