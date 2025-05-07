@@ -1,0 +1,22 @@
+{
+  "id": "ec39caa6-fdf2-4d26-9d69-dec3565126b0",
+  "document_id": "f5b9119c-7c39-4ab8-bbd0-a725edaa0b4d",
+  "created_at": 1746595105.0161362,
+  "updated_at": 1746595105.0161362,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about?",
+      "timestamp": 1746595105.0161362
+    },
+    {
+      "role": "assistant",
+      "content": "The document is a simple one-page demonstration of various text formatting options commonly found in DOCX files, including basic text formatting, lists, different sizes and alignment, and additional formatting such as monospace text, strikethrough text, and blockquotes. [(fcdd5752-fa22-448f-a12d-397ffafa6cd4.docx, p.1)]",
+      "timestamp": 1746595105.0161362,
+      "response_data": {
+        "answer": "The document is a simple one-page demonstration of various text formatting options commonly found in DOCX files, including basic text formatting, lists, different sizes and alignment, and additional formatting such as monospace text, strikethrough text, and blockquotes. [(fcdd5752-fa22-448f-a12d-397ffafa6cd4.docx, p.1)]",
+        "citations": []
+      }
+    }
+  ]
+}

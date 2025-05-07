@@ -1,0 +1,22 @@
+{
+  "id": "8f808b8e-bc70-4eb3-bbef-ed82a2727f21",
+  "document_id": "a43fbf45-89e5-48de-80c7-7a0c5b1ee014",
+  "created_at": 1746594855.7661798,
+  "updated_at": 1746594855.7661798,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about?",
+      "timestamp": 1746594855.7661798
+    },
+    {
+      "role": "assistant",
+      "content": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati. The text discusses their differing views on visiting Meluha, a seemingly ideal place in contrast to their current harsh living conditions in Tibet. Shiva is skeptical of the invitation, while Brahaspati is eager to accept it based on his positive perceptions of Meluha's society.\n\nCitation: [6ae39dde-9c74-4779-910c-5afae673d71b.txt, p. 1]",
+      "timestamp": 1746594855.7661798,
+      "response_data": {
+        "answer": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati. The text discusses their differing views on visiting Meluha, a seemingly ideal place in contrast to their current harsh living conditions in Tibet. Shiva is skeptical of the invitation, while Brahaspati is eager to accept it based on his positive perceptions of Meluha's society.\n\nCitation: [6ae39dde-9c74-4779-910c-5afae673d71b.txt, p. 1]",
+        "citations": []
+      }
+    }
+  ]
+}

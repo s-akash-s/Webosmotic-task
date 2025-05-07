@@ -1,0 +1,22 @@
+{
+  "id": "85d47a76-0b03-47b1-a140-90bb0110cd76",
+  "document_id": "594e1ac9-1843-44a8-be6a-12d0f0d050f3",
+  "created_at": 1746597164.7513657,
+  "updated_at": 1746597164.7526007,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about?",
+      "timestamp": 1746597164.7513657
+    },
+    {
+      "role": "assistant",
+      "content": "The document is about a scene where characters Brahaspati and Shiva are discussing whether or not to accept an invitation from a place called Meluha. Brahaspati, who views Meluha positively due to its perceived fairness and prosperity, wants to go, while Shiva remains skeptical of the offer. [(Document Name: 35a6a966-b5ed-4c28-9406-4c6b4604cc97.txt, Page: 1)]",
+      "timestamp": 1746597164.7526007,
+      "response_data": {
+        "answer": "The document is about a scene where characters Brahaspati and Shiva are discussing whether or not to accept an invitation from a place called Meluha. Brahaspati, who views Meluha positively due to its perceived fairness and prosperity, wants to go, while Shiva remains skeptical of the offer. [(Document Name: 35a6a966-b5ed-4c28-9406-4c6b4604cc97.txt, Page: 1)]",
+        "citations": []
+      }
+    }
+  ]
+}

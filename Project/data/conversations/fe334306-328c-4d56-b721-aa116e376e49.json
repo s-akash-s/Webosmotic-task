@@ -1,0 +1,22 @@
+{
+  "id": "fe334306-328c-4d56-b721-aa116e376e49",
+  "document_id": "dfc7eaf8-c7ee-4c05-a1b6-306b3f212c7e",
+  "created_at": 1746593630.8347561,
+  "updated_at": 1746593630.8347561,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about",
+      "timestamp": 1746593630.8347561
+    },
+    {
+      "role": "assistant",
+      "content": "The document is about Shiva and Brahaspati discussing an invitation from Meluha. Brahaspati advocates for accepting the invitation due to his belief in Meluha's fairness and prosperity, while Shiva expresses skepticism, viewing the offer with caution based on his past experiences. [(Document Name: 2144e391-c2ae-45c4-a081-820021c0850d.txt, Page: 1)]",
+      "timestamp": 1746593630.8347561,
+      "response_data": {
+        "answer": "The document is about Shiva and Brahaspati discussing an invitation from Meluha. Brahaspati advocates for accepting the invitation due to his belief in Meluha's fairness and prosperity, while Shiva expresses skepticism, viewing the offer with caution based on his past experiences. [(Document Name: 2144e391-c2ae-45c4-a081-820021c0850d.txt, Page: 1)]",
+        "citations": []
+      }
+    }
+  ]
+}

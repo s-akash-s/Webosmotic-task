@@ -1,0 +1,64 @@
+{
+  "id": "8cd71982-5259-486b-ad75-bead99947509",
+  "document_id": "740f73f7-6e1b-40e5-9bc2-5a274a63b1be",
+  "created_at": 1746605300.5623112,
+  "updated_at": 1746605397.7838185,
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi",
+      "timestamp": 1746605300.5639317
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! It seems like you're referencing a story about Brahaspati and Shiva discussing an invitation from Meluha. How can I assist you with this context? Do you have a specific question or would you like me to summarize some part of the text?",
+      "timestamp": 1746605300.5639317,
+      "response_data": {
+        "answer": "Hello! It seems like you're referencing a story about Brahaspati and Shiva discussing an invitation from Meluha. How can I assist you with this context? Do you have a specific question or would you like me to summarize some part of the text?",
+        "citations": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "Yes summarize it",
+      "timestamp": 1746605343.6653678
+    },
+    {
+      "role": "assistant",
+      "content": "The context describes a conversation between Brahaspati and Shiva about an invitation to visit Meluha. Brahaspati, optimistic and trusting, believes in the benefits of Meluha, seeing it as a place of fairness, abundance, and divine order. In contrast, Shiva is skeptical due to his experiences with survival struggles in their homeland and his cautious nature. He doubts that anything too perfect can be genuine and feels that trust should only come after earning it.\n\n[dc483ca5-7e69-4d8c-9b04-251e9975c5ef.txt, p.1]",
+      "timestamp": 1746605343.6653678,
+      "response_data": {
+        "answer": "The context describes a conversation between Brahaspati and Shiva about an invitation to visit Meluha. Brahaspati, optimistic and trusting, believes in the benefits of Meluha, seeing it as a place of fairness, abundance, and divine order. In contrast, Shiva is skeptical due to his experiences with survival struggles in their homeland and his cautious nature. He doubts that anything too perfect can be genuine and feels that trust should only come after earning it.\n\n[dc483ca5-7e69-4d8c-9b04-251e9975c5ef.txt, p.1]",
+        "citations": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "what is 2 + 2 ?",
+      "timestamp": 1746605362.4272716
+    },
+    {
+      "role": "assistant",
+      "content": "2 + 2 equals 4.\n\nHowever, if you need this information from the provided context, I don't have enough information to answer this question based on the given text. The context focuses on the characters' thoughts and feelings about an invitation to Meluha and does not contain mathematical information.",
+      "timestamp": 1746605362.4272716,
+      "response_data": {
+        "answer": "2 + 2 equals 4.\n\nHowever, if you need this information from the provided context, I don't have enough information to answer this question based on the given text. The context focuses on the characters' thoughts and feelings about an invitation to Meluha and does not contain mathematical information.",
+        "citations": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "how many character are present ?",
+      "timestamp": 1746605397.7784312
+    },
+    {
+      "role": "assistant",
+      "content": "Based on the provided context, there are two characters present:\n\n1. Brahaspati\n2. Shiva\n\n[dc483ca5-7e69-4d8c-9b04-251e9975c5ef.txt, p.1]",
+      "timestamp": 1746605397.7838185,
+      "response_data": {
+        "answer": "Based on the provided context, there are two characters present:\n\n1. Brahaspati\n2. Shiva\n\n[dc483ca5-7e69-4d8c-9b04-251e9975c5ef.txt, p.1]",
+        "citations": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "916af41b-e328-4a41-a2eb-abc284dbb26e",
+  "document_id": "384d6921-3cdf-4887-b72a-5487c46282dd",
+  "created_at": 1746593861.6424909,
+  "updated_at": 1746593861.643541,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about?",
+      "timestamp": 1746593861.643541
+    },
+    {
+      "role": "assistant",
+      "content": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati, regarding their decision to visit Meluha based on an invitation they received. The text highlights their differing perspectives\u2014Brahaspati's optimism about Meluha versus Shiva's skepticism\u2014and sets up the tension surrounding this decision.\n\n[5f358bcc-8c40-4c88-a52f-12a79dae36cd.txt, p. 1]",
+      "timestamp": 1746593861.643541,
+      "response_data": {
+        "answer": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati, regarding their decision to visit Meluha based on an invitation they received. The text highlights their differing perspectives\u2014Brahaspati's optimism about Meluha versus Shiva's skepticism\u2014and sets up the tension surrounding this decision.\n\n[5f358bcc-8c40-4c88-a52f-12a79dae36cd.txt, p. 1]",
+        "citations": []
+      }
+    }
+  ]
+}

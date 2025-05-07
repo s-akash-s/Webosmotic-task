@@ -1,0 +1,50 @@
+{
+  "id": "65f6c815-d9aa-4995-90f3-14eb9c21b934",
+  "document_id": "08b724b5-e531-4106-b2c5-babb3f5a5777",
+  "created_at": 1746604968.3606627,
+  "updated_at": 1746605016.2785788,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the document about?",
+      "timestamp": 1746604968.3606627
+    },
+    {
+      "role": "assistant",
+      "content": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati. The text discusses their differing views on visiting Meluha, a place described as orderly, abundant, and just, which contrasts with their harsh existence in Tibet. Shiva is skeptical of Meluha's apparent perfection, while Brahaspati is more optimistic about the opportunity it presents.\n\n[bc075778-ecf2-4266-9c37-db9b93bcfb5c.txt, p.1]",
+      "timestamp": 1746604968.3606627,
+      "response_data": {
+        "answer": "The document appears to be an excerpt from a narrative or story that describes the internal conflict between two characters, Shiva and Brahaspati. The text discusses their differing views on visiting Meluha, a place described as orderly, abundant, and just, which contrasts with their harsh existence in Tibet. Shiva is skeptical of Meluha's apparent perfection, while Brahaspati is more optimistic about the opportunity it presents.\n\n[bc075778-ecf2-4266-9c37-db9b93bcfb5c.txt, p.1]",
+        "citations": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "hi",
+      "timestamp": 1746604997.3095393
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! How can I assist you today?",
+      "timestamp": 1746604997.3095393,
+      "response_data": {
+        "answer": "Hello! How can I assist you today?",
+        "citations": []
+      }
+    },
+    {
+      "role": "user",
+      "content": "what is 2 + 2 ?",
+      "timestamp": 1746605016.2785788
+    },
+    {
+      "role": "assistant",
+      "content": "2 + 2 equals 4.\n\nThis is a basic arithmetic operation and does not require any reference to the provided context.",
+      "timestamp": 1746605016.2785788,
+      "response_data": {
+        "answer": "2 + 2 equals 4.\n\nThis is a basic arithmetic operation and does not require any reference to the provided context.",
+        "citations": []
+      }
+    }
+  ]
+}
